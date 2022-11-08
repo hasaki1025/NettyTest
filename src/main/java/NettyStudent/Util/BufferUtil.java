@@ -20,11 +20,17 @@ public class BufferUtil {
         return stringBuffer.toString();
     }
 
+
+
     public static String getMessgaeFromKey(SelectionKey key) throws IOException {
         SocketChannel channel = (SocketChannel) key.channel();
         ByteBuffer buffer = (ByteBuffer) key.attachment();
-        int read = channel.read(buffer);
-        if (read==-1)
+        int read=-1;
+        if (channel.isConnected())
+        {
+            read = channel.read(buffer);
+        }
+        if (read==-1 && !buffer.hasRemaining())
         {
             key.cancel();
             return "";
@@ -52,5 +58,6 @@ public class BufferUtil {
             key.attach(allocate);
         }
         return s.toString().endsWith("\n") ?  s.toString() : "";
+
     }
 }

@@ -21,6 +21,7 @@ public class Client02 {
             ByteBuffer buffer = StandardCharsets.UTF_8.encode(sb.toString());
             sleep(10000);
             channel.write(buffer);
+            channel.shutdownOutput();
         }
     }
 }
