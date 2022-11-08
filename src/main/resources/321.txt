@@ -1,1 +1,25 @@
-1231123112312312231231212fjsdflsflsdlfhklfkl
+NioEventLoopGroup group = new NioEventLoopGroup();
+        try {
+            Channel channel = new Bootstrap()
+                    .group(group)
+                    .channel(NioSocketChannel.class)
+                    .handler(new ChannelInitializer<NioSocketChannel>() {
+                        @Override
+                        protected void initChannel(NioSocketChannel ch) throws Exception {
+                            ch.pipeline().addLast(new ChannelInboundHandlerAdapter(){
+                                @Override
+                                public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+                                    ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(16);
+                                    buffer.writeBytes(new byte[]{1,2,3,5,6,8,9,10,11,12,13,14,15,16});
+                                    ctx.writeAndFlush(buffer);
+                                    ctx.channel().close();
+                                }
+                            });
+                        }
+                    }).connect("127.0.0.1",8080).sync().channel();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            group.shutdownGracefully();
+        }

@@ -1,3 +1,6 @@
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -19,12 +22,15 @@ public class BufferTest {
             System.out.print((char) buffer.get());
         }
 
+        channel.read(buffer.nioBuffer());
+        System.out.println(buffer.toString(StandardCharsets.UTF_8));
     }
 
     @Test
-    public void name() {
-        StringBuilder builder = new StringBuilder("123\n");
-        System.out.println(builder.toString().replace("\n", ""));
-
+    public void name() throws IOException {
+        FileChannel channel = new FileInputStream("src/main/resources/123.txt").getChannel();
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(1000);
+        long a=0x11000000;
+        System.out.println(a);
     }
 }
