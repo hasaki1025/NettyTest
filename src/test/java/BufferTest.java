@@ -25,6 +25,7 @@ public class BufferTest {
     public void name() {
         StringBuilder builder = new StringBuilder("123\n");
         System.out.println(builder.toString().replace("\n", ""));
-
+        long a=0x11000000;
+        System.out.println(a);
     }
 }

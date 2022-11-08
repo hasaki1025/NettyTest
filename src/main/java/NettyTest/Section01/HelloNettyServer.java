@@ -33,6 +33,7 @@ public class HelloNettyServer {
                                             @Override//打印转换完成的数据信息
                                             public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
                                                 log.info("get messgae : {}",msg);
+                                                super.channelRead(ctx,msg);
                                             }
                                         }
                                 );
