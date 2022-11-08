@@ -1,4 +1,4 @@
-package NettyStudent.Section01;
+package NettyStudy.Section01;
 
 import java.io.File;
 import java.io.FileInputStream;

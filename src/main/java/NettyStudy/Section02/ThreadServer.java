@@ -1,12 +1,10 @@
-package NettyStudent.Section02;
+package NettyStudy.Section02;
 
-import NettyStudent.Section01.SelectorServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.*;
-import java.util.HashSet;
 import java.util.Iterator;
 
 @Slf4j
@@ -19,6 +17,7 @@ public class ThreadServer {
         channel.configureBlocking(false);
         channel.bind(new InetSocketAddress(8080));
         channel.register(selector, SelectionKey.OP_ACCEPT,null);
+
         while (true)
         {
             log.info("ThreadServer wait....");

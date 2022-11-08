@@ -1,11 +1,9 @@
-package NettyStudent.Util;
+package NettyStudy.Util;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectableChannel;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.CharsetEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class BufferUtil {
@@ -26,16 +24,19 @@ public class BufferUtil {
         SocketChannel channel = (SocketChannel) key.channel();
         ByteBuffer buffer = (ByteBuffer) key.attachment();
         int read=-1;
-        if (channel.isConnected())
+        try {
+            read=channel.read(buffer);
+        }catch (Exception e)
         {
-            read = channel.read(buffer);
+            e.printStackTrace();
+
         }
+        buffer.flip();
         if (read==-1 && !buffer.hasRemaining())
         {
             key.cancel();
             return "";
         }
-        buffer.flip();
         StringBuilder s=new StringBuilder();
         while (buffer.hasRemaining())
         {

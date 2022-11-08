@@ -1,9 +1,8 @@
-package NettyStudent.Section01;
+package NettyStudy.Section01;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 public class ChannelTransfer {

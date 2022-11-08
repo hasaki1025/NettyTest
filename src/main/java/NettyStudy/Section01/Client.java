@@ -1,4 +1,4 @@
-package NettyStudent.Section01;
+package NettyStudy.Section01;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,8 +6,6 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.StandardCharsets;
 
 import static java.lang.Thread.sleep;
 

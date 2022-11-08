@@ -1,6 +1,6 @@
-package NettyStudent.Section01;
+package NettyStudy.Section01;
 
-import NettyStudent.Util.BufferUtil;
+import NettyStudy.Util.BufferUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
